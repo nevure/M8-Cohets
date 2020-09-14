@@ -26,7 +26,12 @@ public class MarchandoCohetes {
 	
 	public void ahiVaCohete(VehiculoVolador cohete, int[] velocidades, String tipo) {
 		
-		System.out.println("Marchando cohete : "+cohete.getNombre()+" Con "+cohete.toStringFase3()+"con Tread id: "+Thread.currentThread()+" y el objeto this es: "+this.toString() );
+		String objetivo= "";
+		for (int velocidad: velocidades) objetivo=objetivo+","+String.valueOf(velocidad);
+		
+		System.out.println("Marchando cohete : "+cohete.getNombre()+".  "+cohete.toStringFase3()+". Objetivo potencia: "+objetivo );
 			cohete.aceleraVehiculoVolador(velocidades);		
 	}
+	
+	
 }

@@ -46,7 +46,7 @@ import java.util.Arrays;
 		 
 		 id = String.valueOf(((int)((Math.random()*100)*(Math.random()*100))));
 		 // Variables Fase 4
-		 int velocidadTotal, velocidadActual, calculoTotal, potenciaTotalMotores=0;
+		 int velocidadTotal, velocidadActual, calculoTotal, potenciaTotalMotores=0, bkVelocidadActual;
 		 
 
 		 /*
@@ -142,7 +142,6 @@ import java.util.Arrays;
 	     calculoTotal = ((velocidadTotal-velocidadActual)/100);  
 	     calculoTotal = (int)Math.pow(calculoTotal, 2);
 	     
-	    // System.out.println("El calculo total a repartir es:"+calculoTotal);
 	     
 	     // Neceistamos saber que potencia total suman nuestro propulsores-
 	     for (int potencia: fase4cohete.potenciaMotores()) {
@@ -165,9 +164,10 @@ import java.util.Arrays;
 	      * 
 	      */
 	     else {
+	    	 velocidadActual = velocidadTotal;
 		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
 		 
-		     for (int e: velocidades) System.out.println(" velocidades a alcanzar en el despegue son: "+e);
+		     for (int e: velocidades) System.out.println(" velocidades a alcanzar en el despegue son : "+e);
 
 	    	 //velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
 		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();
@@ -181,16 +181,20 @@ import java.util.Arrays;
 	      * No comentamos las siguiente lineas al ser una copia de las anteriores.
 	      */
 	     
-	     velocidadActual = velocidadTotal;
-	     velocidadTotal = 873;
+	     
+ 	     velocidadTotal = 873;
 
-	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
-	     calculoTotal = (int)Math.pow(calculoTotal, 2);
-	     
-	     
-	     if (calculoTotal > potenciaTotalMotores)
+ 	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
+ 	     calculoTotal = (int)Math.pow(calculoTotal, 2);
+ 	    
+	     if (calculoTotal > potenciaTotalMotores) {
 	    	 System.out.println("El cohete no puede alcanzar la velocidad de 873.");
+	     }
 	     else {
+	    	 
+		     velocidadActual = velocidadTotal;
+
+	  
 		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
 		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el primer cambio a 873 son: "+e);
 
@@ -198,63 +202,88 @@ import java.util.Arrays;
 		}
 	     
 	     
-	     velocidadActual = velocidadTotal;
-	     velocidadTotal = 2450;
- 
-	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
-	     calculoTotal = (int)Math.pow(calculoTotal, 2);
 	     
-	     //System.out.println("El calculo total a repartir es:"+calculoTotal);
-	     
-	     if (calculoTotal > potenciaTotalMotores)
-	    	 System.out.println("El cohete no puede alcanzar la velociad de 2450.");
-	     else {
-		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
-		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el segundo cambio a 2450 son: "+e);
+ 	     velocidadTotal = 1650;
 
-	    	 //velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
-		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();
-			
-		}  
-	     
-	     velocidadActual = velocidadTotal;
-	     velocidadTotal = 812450;
- 
-	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
-	     calculoTotal = (int)Math.pow(calculoTotal, 2);
-	     
-	     //System.out.println("El calculo total a repartir es:"+calculoTotal);
-	     
-	     if (calculoTotal > potenciaTotalMotores)
-	    	 System.out.println("El cohete no puede alcanzar la velociad de 812450.");
+ 	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
+ 	     calculoTotal = (int)Math.pow(calculoTotal, 2);
+ 	    
+	     if (calculoTotal > potenciaTotalMotores) {
+	    	 System.out.println("El cohete no puede alcanzar la velocidad de 1650.");
+	     }
 	     else {
-		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
-		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el tercer cambio a 812450 son: "+e);
+	    	 
+		     velocidadActual = velocidadTotal;
 
-	    	 //velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
-		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();
-			
-		}  
+	  
+		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
+		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el primer cambio a 1650 son: "+e);
+
+		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();		
+		}
 	     
-	     velocidadActual = velocidadTotal;
-	     velocidadTotal = 2350;
- 
-	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
-	     calculoTotal = (int)Math.pow(calculoTotal, 2);
+	     /*
 	     
-	     //System.out.println("El cálculo total a repartir es:"+calculoTotal);
-	     
-	     if (calculoTotal > potenciaTotalMotores)
-	    	 System.out.println("El cohete no puede alcanzar la velociad de 2350.");
+ 	     velocidadTotal = 2050;
+
+ 	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
+ 	     calculoTotal = (int)Math.pow(calculoTotal, 2);
+ 	    
+	     if (calculoTotal > potenciaTotalMotores) {
+	    	 System.out.println("El cohete no puede alcanzar la velocidad de 2050.");
+	     }
 	     else {
-		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
-		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el cuarto cambio a 2350 son: "+e);
+	    	 
+		     velocidadActual = velocidadTotal;
 
-	    	 //velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
-		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();
-			
-		}  
+	  
+		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
+		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el primer cambio a 2050 son: "+e);
+
+		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();		
+		}
 	     
+	     
+	     
+ 	     velocidadTotal = 3050;
+
+ 	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
+ 	     calculoTotal = (int)Math.pow(calculoTotal, 2);
+ 	    
+	     if (calculoTotal > potenciaTotalMotores) {
+	    	 System.out.println("El cohete no puede alcanzar la velocidad de 3050.");
+	     }
+	     else {
+	    	 
+		     velocidadActual = velocidadTotal;
+
+	  
+		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
+		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el primer cambio a 3050 son: "+e);
+
+		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();		
+		}
+	     
+	     
+	     
+ 	     velocidadTotal = 1250;
+
+ 	     calculoTotal = ((velocidadTotal-velocidadActual)/100);
+ 	     calculoTotal = (int)Math.pow(calculoTotal, 2);
+ 	    
+	     if (calculoTotal > potenciaTotalMotores) {
+	    	 System.out.println("El cohete no puede alcanzar la velocidad de 1250.");
+	     }
+	     else {
+	    	 
+		     velocidadActual = velocidadTotal;
+
+	  
+		     int[] velocidades = potenciaMotores(fase4cohete.potenciaMotores(),calculoTotal);
+		     for (int e: velocidades) System.out.println(" velocidades a alcanzar por propulsores en el primer cambio a 1250 son: "+e);
+
+		     new Thread(() -> marchandoCohetes.ahiVaCohete(fase4cohete, velocidades, "acelera")).start();		
+		}*/
 	     
 
 	 }
